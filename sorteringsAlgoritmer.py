@@ -1,35 +1,45 @@
 import random, copy
 
-def bogoSort(items):
-    # Kopier den liste, vi har modtaget som parameter, så vi ikke ændrer den originale
+
+
+
+
+
+def insertionSort(items):
     items = items.copy()
-    isSorted = None # Boolean til markering af, om listen er sorteret
-    attempts = 0 # Tællevariabel til at holde styr på antal af forsøg
-    while not isSorted:
-        attempts += 1
-        if attempts > len(items) * 5000: # Check for at stoppe tendensen mod uendeligt
-            print('Giver op på grund af for mange forsøg ({}) og bruger TimSort'.format(attempts))
-            items.sort()
-            return items
-        random.shuffle(items) # Bland alle elementer helt tilfældigt
-        isSorted = True # Vi går ud fra at listen tilfældigvis er sorteret,
-        # ...og prøver i denne løkke at bevise det modsatte
-        for index in range(len(items)-1):
-            if items[index] > items[index+1]:
-                isSorted = False
-                break # Bryd løkken hvis et eneste element er forkert sorteret
-    print('Sorteret efter {} forsøg'.format(attempts))
+
+    for i in range(1,len(items)):
+
+        x = i-1
+        while i < x:
+            temp = items[i]
+            if items[i] < items[x]:
+                items[x] = items[i]
+                items[i] = temp
+                i =-1
+                x =-1
+            else:
+                break
+
     return items
 
 
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
-    l = list(range(0, 5))
+    l = list(range(0, 20))
     lb = l.copy()
     for i in range(50):
         random.shuffle(lb)
-        ## Kald den funktion, du vil teste
-        ls = bogoSort(l)
-        ## Kald den funktion, du vil teste
+        ls = insertionSort(l)
         if ls != l:
             print('Fejl! Algoritmen kan ikke sortere.')
             break

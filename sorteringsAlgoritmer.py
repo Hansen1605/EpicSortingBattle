@@ -1,25 +1,25 @@
 import random, copy
 
-def bogoSort(items):
-    # Kopier den liste, vi har modtaget som parameter, så vi ikke ændrer den originale
-    items = items.copy()
-    isSorted = None # Boolean til markering af, om listen er sorteret
-    attempts = 0 # Tællevariabel til at holde styr på antal af forsøg
-    while not isSorted:
-        attempts += 1
-        if attempts > len(items) * 5000: # Check for at stoppe tendensen mod uendeligt
-            print('Giver op på grund af for mange forsøg ({}) og bruger TimSort'.format(attempts))
-            items.sort()
-            return items
-        random.shuffle(items) # Bland alle elementer helt tilfældigt
-        isSorted = True # Vi går ud fra at listen tilfældigvis er sorteret,
-        # ...og prøver i denne løkke at bevise det modsatte
-        for index in range(len(items)-1):
-            if items[index] > items[index+1]:
-                isSorted = False
-                break # Bryd løkken hvis et eneste element er forkert sorteret
-    print('Sorteret efter {} forsøg'.format(attempts))
+
+def bubbleSort (items):
+    items = items.copy()#laver kopi af items
+    n = len(items)
+    swapped = False
+
+    for i in range(n-1):#lykken gentager sig selv, sidste tal i listen vender sig oms
+
+        for j in range(0,n-i-1):#krydser array fra 0 til n-i-1
+
+            if items[j] > items[j+1]:#for lykke bytter tal hvis det er større end næste tal
+                swapped = True
+                items[j], items[j+1] = items[j+1], items[j]#Bytter tal rundt
+
+            if not swapped:
+                break
+
     return items
+
+
 
 
 if __name__ == '__main__':
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     for i in range(50):
         random.shuffle(lb)
         ## Kald den funktion, du vil teste
-        ls = bogoSort(l)
+        ls = bubbleSort(l)
         ## Kald den funktion, du vil teste
         if ls != l:
             print('Fejl! Algoritmen kan ikke sortere.')
@@ -36,3 +36,6 @@ if __name__ == '__main__':
     print('Succes! Algoritmen sorterer korrekt.')
     print('blandet: ', lb)
     print('sorteret:', ls)
+
+
+

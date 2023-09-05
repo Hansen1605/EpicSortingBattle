@@ -33,6 +33,7 @@ def bubbleSort (items):
 
             if not swapped:
                 break
+    return items
 
 
 
@@ -42,7 +43,7 @@ if __name__ == '__main__':
     for i in range(50):
         random.shuffle(lb)
         ## Kald den funktion, du vil teste
-        ls = insertionSort(l)
+        ls = bubbleSort(l)
         ## Kald den funktion, du vil teste
         if ls != l:
             print('Fejl! Algoritmen kan ikke sortere.')

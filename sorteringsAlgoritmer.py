@@ -57,16 +57,16 @@ def insertionSort(items):
     items = items.copy()
 
     for i in range(1,len(items)):
-
         x = i-1
-        while i < x:
-            temp = items[i]
+        while i > 0:
             if items[i] < items[x]:
+                temp = items[x]
                 items[x] = items[i]
                 items[i] = temp
-                i =-1
-                x =-1
+                i -=1
+                x -=1
             else:
+
                 break
 
     return items

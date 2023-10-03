@@ -54,21 +54,18 @@ def mergeSort(items, l, r):
 
 
 def insertionSort(items):
-    items = items.copy()
-
-    for i in range(1,len(items)):
-        x = i-1
+    items = items.copy() # kopier listen givet
+    for i in range(1,len(items)): # Løkke der kører listen igennem der starter ved 1
+        x = i-1         # Sætter x til 1 mindre end i som bruges til at tjekke index til venstre for i
         while i > 0:
-            if items[i] < items[x]:
+            if items[i] < items[x]: # Bytter om på index i og x i listen hvis i er mindre end x så længe i > 0
                 temp = items[x]
                 items[x] = items[i]
                 items[i] = temp
-                i -=1
-                x -=1
+                i -= 1
+                x -= 1
             else:
-
                 break
-
     return items
 
 def bubbleSort (items):

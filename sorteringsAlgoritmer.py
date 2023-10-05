@@ -1,19 +1,19 @@
 import random, copy
 
 
-def merge(items, l, m, r):
+def merge(items, l, m, r):#items er data, l er venstre side af listen, m er midten af listen og r er højre side af listen
     #items = items.copy()
 
 
-    n1 = m - l + 1
-    n2 = r - m
-    L = [0] * (n1)
-    R = [0] * (n2)
+    n1 = m - l + 1#er første del af listen efter den splittet op
+    n2 = r - m#er anden del af listen
+    L = [0] * (n1)#er venstre side
+    R = [0] * (n2)#er højre side
 
-    for i in range (0, n1):
+    for i in range (0, n1):#er venstre side
         L[i] = items[l + i]
 
-    for j in range (0, n2):
+    for j in range (0, n2):#er højre side
         R[j] = items[m + 1 + j]
 
     i = 0

@@ -3,6 +3,8 @@ import random, copy
 
 def merge(items, l, m, r):
     #items = items.copy()
+
+
     n1 = m - l + 1
     n2 = r - m
     L = [0] * (n1)
@@ -39,7 +41,10 @@ def merge(items, l, m, r):
         j += 1
         k += 1
 
-def mergeSort(items, l, r):
+def mergeSort(items, l = None, r = None):
+    if l == None and r == None:
+        l = 0
+        r = len(items) - 1
     if l < r:
         m = l + (r - l)//2
         mergeSort(items, l, m)
@@ -88,7 +93,7 @@ def bubbleSort (items):
 
 
 if __name__ == '__main__':
-    l = list(range(0, 5))
+    l = list(range(0, 3 ))
     lb = l.copy()
     for i in range(50):
         random.shuffle(lb)

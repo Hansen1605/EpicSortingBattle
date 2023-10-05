@@ -54,7 +54,17 @@ def mergeSort(items, l = None, r = None):
         return items
 
 
+def selectionSort(items):
+    items = items.copy()
+    for i in range(len(items)):
+        temp = i
 
+        for j in range(temp + 1, len(items)):
+            if items[j] < items[temp]:
+                temp = j
+        (items[i], items[temp]) = (items[temp], items[i])
+
+    return items
 
 
 

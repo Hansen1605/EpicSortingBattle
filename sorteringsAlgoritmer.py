@@ -83,21 +83,19 @@ def insertionSort(items):
                 break
     return items
 
-def bubbleSort (items):
-    items = items.copy()#laver kopi af items
+def bubbleSort(items):
+    items = items.copy()  # laver kopi af items
     n = len(items)
     swapped = False
+    for i in range(n - 1):  # lykken gentager sig selv, sidste tal i listen vender sig om
 
-    for i in range(n-1):#lykken gentager sig selv, sidste tal i listen vender sig oms
-
-        for j in range(0,n-i-1):#krydser array fra 0 til n-i-1
-
-            if items[j] > items[j+1]:#for lykke bytter tal hvis det er større end næste tal
+        for j in range(0, n - i - 1):  # krydser array fra 0 til n-i-1
+            if items[j] > items[j + 1]:  # for lykke bytter tal hvis det er større end næste tal
                 swapped = True
-                items[j], items[j+1] = items[j+1], items[j]#Bytter tal rundt
+                items[j], items[j + 1] = items[j + 1], items[j]  # Bytter tal rundt
 
-            if not swapped:
-                break
+        if not swapped:
+            break
     return items
 
 

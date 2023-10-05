@@ -2,23 +2,21 @@ import random, copy
 
 
 def merge(items, l, m, r):
-    #items = items.copy()
     n1 = m - l + 1
     n2 = r - m
     L = [0] * (n1)
     R = [0] * (n2)
 
-    for i in range (0, n1):
+    for i in range(0, n1):
         L[i] = items[l + i]
-
-    for j in range (0, n2):
+    for j in range(0, n2):
         R[j] = items[m + 1 + j]
 
     i = 0
     j = 0
     k = l
 
-    while i < n1 & j < n2:
+    while i < n1 and j < n2:  # Ændret '&' til 'and' her
         if L[i] <= R[j]:
             items[k] = L[i]
             i += 1
@@ -27,30 +25,39 @@ def merge(items, l, m, r):
             j += 1
         k += 1
 
-    print(L, R) # Skriv om til nye sublister i memory
-
     while i < n1:
         items[k] = L[i]
         i += 1
         k += 1
-
     while j < n2:
         items[k] = R[j]
         j += 1
         k += 1
 
-def mergeSort(items, l, r):
+
+def mergeSort(items, l=None, r=None):
+    if l is None and r is None:
+        l = 0
+        r = len(items) - 1
     if l < r:
-        m = l + (r - l)//2
+        m = l + (r - l) // 2
         mergeSort(items, l, m)
         mergeSort(items, m + 1, r)
         merge(items, l, m, r)
-        #print(items)
-        return items
+    return items
 
 
+def selectionSort(items):
+    items = items.copy()
+    for i in range(len(items)):
+        temp = i
 
+        for j in range(temp + 1, len(items)):
+            if items[j] < items[temp]:
+                temp = j
+        (items[i], items[temp]) = (items[temp], items[i])
 
+    return items
 
 
 def insertionSort(items):
@@ -67,7 +74,6 @@ def insertionSort(items):
             else:
                 break
     return items
-
 def bubbleSort(items):
     items = items.copy()  # laver kopi af items
     n = len(items)
@@ -85,12 +91,13 @@ def bubbleSort(items):
 
 
 if __name__ == '__main__':
-    l = list(range(0, 20))
+    l = list(range(0, 10 ))
     lb = l.copy()
     for i in range(50):
         random.shuffle(lb)
         ## Kald den funktion, du vil teste
-        ls = insertionSort(lb)
+        ls = mergeSort(lb.copy())
+
         ## Kald den funktion, du vil teste
         if ls != l:
             print('Fejl! Algoritmen kan ikke sortere.')

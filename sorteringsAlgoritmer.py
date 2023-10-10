@@ -49,19 +49,19 @@ def mergeSort(items, l=None, r=None):
 
 def selectionSort(items):
     items = items.copy()
-    for i in range(len(items)):
+    for i in range(len(items)): #Løkke der kører listen igennem
         temp = i
 
-        for j in range(temp + 1, len(items)):
-            if items[j] < items[temp]:
+        for j in range(temp + 1, len(items)): #Kører listen igennem og starter ved den til højre for temp/i
+            if items[j] < items[temp]: #Sætter ny temp hvis der findes ny mindsteværdi
                 temp = j
-        (items[i], items[temp]) = (items[temp], items[i])
+        (items[i], items[temp]) = (items[temp], items[i]) #bytter om på index i og den nye mindste værdi hvis der er en
 
     return items
 
 
 def insertionSort(items):
-    items = items.copy() # kopier listen givet
+    items = items.copy()
     for i in range(1,len(items)): # Løkke der kører listen igennem der starter ved 1
         x = i-1         # Sætter x til 1 mindre end i som bruges til at tjekke index til venstre for i
         while i > 0:

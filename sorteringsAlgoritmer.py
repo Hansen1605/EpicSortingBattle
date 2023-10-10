@@ -1,22 +1,24 @@
 import random, copy
 
 
-def merge(items, l, m, r):
-    n1 = m - l + 1
-    n2 = r - m
+def merge(items, l, m, r):#l er venstre side af listen, m er midten og r er højre side af listen
+    n1 = m - l + 1#første del af listen
+    n2 = r - m#anden del af listen
+    #midlertidig arrays
     L = [0] * (n1)
     R = [0] * (n2)
 
-    for i in range(0, n1):
+#kopiere data til midlertidig arrays
+    for i in range(0, n1):#liste 1
         L[i] = items[l + i]
-    for j in range(0, n2):
+    for j in range(0, n2):#liste 2
         R[j] = items[m + 1 + j]
 
     i = 0
     j = 0
     k = l
 
-    while i < n1 and j < n2:  # Ændret '&' til 'and' her
+    while i < n1 and j < n2:  #mens i og j er mindre end n1 og n2
         if L[i] <= R[j]:
             items[k] = L[i]
             i += 1
@@ -25,22 +27,25 @@ def merge(items, l, m, r):
             j += 1
         k += 1
 
+#kopirer de resterende elementer fra L[] hvis der er nogle
     while i < n1:
         items[k] = L[i]
         i += 1
         k += 1
+        #kopirer de resterende elementer fra R[] hvis der er nogle
     while j < n2:
         items[k] = R[j]
         j += 1
         k += 1
 
 
-def mergeSort(items, l=None, r=None):
+def mergeSort(items, l=None, r=None):#
     if l is None and r is None:
         l = 0
         r = len(items) - 1
     if l < r:
         m = l + (r - l) // 2
+        #her kalder vi funktionerne
         mergeSort(items, l, m)
         mergeSort(items, m + 1, r)
         merge(items, l, m, r)
